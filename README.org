@@ -2,8 +2,21 @@
 #+description: Mads' personal configuration
 #+author:    Mads Røskar
 #+email:     madshvero@gmail.com
-
+#+options: todo:t
 * About this repo
+** What is this?
+This repository keeps my personal configuration so set up my environment. Since being introduced
+to emacs by a colleague[fn:1], I've really started enjoying it, and especially =org-mode= and =magit=.
+
+This setup is most likely just super redundant/overcomplicated, but it seemed like a fun time sink for a Saturday
+to mess around a bit with =org-mode=, and some [[*Utilities][simple emacs lisp functions]].
+
+Who I am:
+#+begin_src elisp :tangle (tdir ".doom.d/config.el")
+(setq user-full-name "Mads Røskar"
+      user-mail-address "madshvero@gmail.com")
+#+end_src
+
 ** Goals
 - All config/dotfiles in one place
 - Work for each environment i'd use
@@ -18,18 +31,34 @@
 - =git clonei git@github.com:madsroskar/.mads.d.git=
 - Execute the buffer
   =C-c C-v b=
+- Tangle everything
+  ==
 * Setup
 :PROPERTIES:
 :header-args: :dir ./files :mkdirp yes
 :END:
 ** Utilities
+*** Evaluate needed utilities
+This just exists as a convenience so I can have the utilities evaluated at the same time, rather than one at a time.
+At a later stage I should find a better way to go about this, but evaluating it as a file-local-variable is considered
+a security risk, and I'll  not spend too much time on that right now.
+
+#+name: startblock
+#+begin_src elisp :results output silent
+(save-excursion
+  (org-babel-goto-named-src-block "tangle-util")
+  (org-babel-execute-src-block)
+  (org-babel-goto-named-src-block "tangle-base-dir")
+  (org-babel-execute-src-block)
+  )
+#+end_src
+**** TODO Find a way to not have to evaluate this manually, and preferably before the rest of the config is set up
 *** Conditional tangle per OS
-- Note taken on [2021-07-17 Sat 15:56] \\
-  WHat
 To be able to be selective about which OS a file should be tangled for, I have
 a simple function to pass to the tangle header argument for simplicity.
 
 Checking the system type is based on [[https://emacs.stackexchange.com/a/14034][this stackexchange answer]].
+#+name: tangle-util
 #+begin_src elisp :tangle no :results output silent
 (defun tos (os file-name)
   "tos (tangle OS) returns the passed file-name if the current system is the passed OS, with shortened names for convenience"
@@ -46,9 +75,6 @@ If ran on macOS, it will look like the following:
 (tos "mac" "right/here")
 #+end_src
 
-#+RESULTS:
-: right/here
-
 #+begin_example
 #+RESULTS:
 : right/here
@@ -62,6 +88,7 @@ That directory will (for now at least) be my source for =stow=.
 > But Mads, why don't you just do this inline on code blocks?
 
 Idk, just seemed easier, and I can change it around later if I want, don't judge I have minimal elisp experience so far
+#+name: tangle-base-dir
 #+begin_src elisp :results output silent
 (setq base-tangle-directory "./.files/")
 
@@ -86,6 +113,50 @@ The usage will be:
 #+end_example
 
 ** DOOM Emacs
+*** Config
+:PROPERTIES:
+:header-args: :tangle (tdir ".doom.d/config.el")
+:END:
+This is my custom configuration for doom emacs, and all the underlying code blocks will tangle to =.doom.d/config.el=.
+I have disabled the literate config module in doom emacs since I will keep the literate version of it here pre tangle
+anyways.
+**** Theme / looks
+I used to use the =doom-dracula= theme, and have the same theme set up for several other applications, but
+for some novelty I switch the themes around a bit at times. For now, swapping between these two themes seems
+to be more than good enough:
+#+BEGIN_SRC elisp
+;; (setq doom-theme 'doom-dracula)
+(setq doom-theme 'doom-tomorrow-night)
+#+END_SRC
+
+I tried having a transparent background for my frame, but it seemed
+like macOS wasn't all that much into it and turned into jet engine mode. I legit thought it was going to lift off
+from my desk.
+#+begin_src elisp
+;;(set-frame-parameter (selected-frame) 'alpha '(95 . 95))
+;;(add-to-list 'default-frame-alist '(alpha . (95 . 95)))
+#+end_src
+
+***** Font
+I kind of arbitrarily decided to try out the Hack Nerd Font, and somehow can't imagine using anything else right now,
+so I've set that up for myself. However, this naturally needs to be installed before use.
+
+Steps to get this working:
+1. Install the font on your system
+   a. macOS
+      #+begin_src shell :eval query
+git clone https://github.com/ryanoasis/nerd-fonts
+cd nerd-fonts
+# sudo ./install.sh
+      #+end_src
+   b. Linux
+2. Have doom use the Hack Nerd Font
+**** Org-mode
+I currently just use the default setting for the org mode directory:
+#+BEGIN_SRC elisp
+(setq org-directory "~/org/")
+#+END_SRC
+
 *** init.el
 This is the entry point to the DOOM configuration, which sets up modules to be used with the setup.
 
@@ -277,7 +348,7 @@ This is the entry point to the DOOM configuration, which sets up modules to be u
        twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       literate
+       ;; literate
        (default +bindings +smartparens))
 #+end_src
 *** custom.el
@@ -366,3 +437,6 @@ This file should define all packages I want to have available, on top of what do
 #+RESULTS:
 | format-all | :modules | (nil) |
 
+* Footnotes
+
+[fn:1] I will wait with adding a link here till I've asked the person whether it's alright to link them here or not. Not a big deal in this case I'd think, but rather safe than sorry 😊
