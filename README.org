@@ -53,6 +53,7 @@ a security risk, and I'll  not spend too much time on that right now.
   )
 #+end_src
 **** TODO Find a way to not have to evaluate this manually, and preferably before the rest of the config is set up
+- Could possibly make it into a minor mode for myself? 🤔
 *** Conditional tangle per OS
 To be able to be selective about which OS a file should be tangled for, I have
 a simple function to pass to the tangle header argument for simplicity.
@@ -112,6 +113,13 @@ The usage will be:
 : ./files/.config/mads/.sleep-schedule
 #+end_example
 
+** Complete list of custom keybinds
+#+begin_src elisp :noweb yes :tangle no
+<<keybind-org>>
+
+<<keybind-doom>>
+
+#+end_src
 ** DOOM Emacs
 *** Config
 :PROPERTIES:
@@ -137,18 +145,39 @@ from my desk.
 ;;(add-to-list 'default-frame-alist '(alpha . (95 . 95)))
 #+end_src
 
-***** Font
+Don't need to set the title for xterm
+#+begin_src elisp
+(after! xterm
+  (setq xterm-set-window-title nil))
+#+end_src
+
+Show the time and battery status in the modeline.
+Currently commented out as it seemed like it was producing an error,
+will have to check that out later
+#+begin_src elisp
+;; (display-time-mode 1)
+;; (unless (string-match-p "^Power N/A" (battery))
+;;   (display-battery-mode 1))
+#+end_src
+
+Set frame title depending on whether the file in the active buffer has been
+modified since the last write or not
+#+begin_src elisp :results output silent
+(setq frame-title-format
+      '(""
+        (:eval
+         (let ((project-name (projectile-project-name)))
+           (unless (string= "-" project-name)
+             (format (if (buffer-modified-p)  " ◉ %s" "  ●  %s") project-name))))))
+#+end_src
+
+***** TODO Font (Shell script? elisp? whoknows)
 I kind of arbitrarily decided to try out the Hack Nerd Font, and somehow can't imagine using anything else right now,
 so I've set that up for myself. However, this naturally needs to be installed before use.
 
 Steps to get this working:
 1. Install the font on your system
-   a. macOS
-      #+begin_src shell :eval query
-git clone https://github.com/ryanoasis/nerd-fonts
-cd nerd-fonts
-# sudo ./install.sh
-      #+end_src
+   a. macOS (Baaaah, can't figure out how to make it only write the file, poopoooooo)
    b. Linux
 2. Have doom use the Hack Nerd Font
 **** Org-mode
@@ -156,6 +185,38 @@ I currently just use the default setting for the org mode directory:
 #+BEGIN_SRC elisp
 (setq org-directory "~/org/")
 #+END_SRC
+
+I also have the agenda files in the same directory. As for right now I haven't spend the
+time or effort needed to get into using the agenda views at all, so this might have to change
+for all I know.
+#+begin_src elisp
+(setq org-agenda-files '("~/org"))
+#+end_src
+
+Custom org headline bullets so I'll look cool if somebody sees me in org-mode:
+#+begin_src elisp
+(setq
+    org-superstar-headline-bullets-list '("⁖" "◉" "○" "✸" "✿")
+)
+#+end_src
+
+The original mapping for shiftmetaright was a bit wonky, =M-l= works better for me
+#+name: keybind-org
+#+begin_src elisp
+(map! :map org-mode-map
+      :after org
+      :n "M-l" #'org-shiftmetaright)
+#+end_src
+**** Keybinds
+Most keybinds are set up by doom and evil-mode, but a few have been added or changed to work
+better for me. See a [[*Complete list of custom keybinds][complete list of custom keybinds for an overview]]
+
+Use command in macos as Meta, and don't pass it to the system:
+#+name: keybind-doom
+#+begin_src elisp
+(setq mac-command-modifier 'meta)
+(setq mac-pass-command-to-system nil)
+#+end_src
 
 *** init.el
 This is the entry point to the DOOM configuration, which sets up modules to be used with the setup.
