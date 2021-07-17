@@ -45,3 +45,8 @@ If ran on macOS, it will look like the following:
 
 #+RESULTS:
 : right/here
+
+#+begin_example
+#+RESULTS:
+: right/here
+#+end_example
