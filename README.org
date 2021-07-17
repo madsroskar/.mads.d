@@ -21,6 +21,8 @@
 * Setup
 ** Common setup
 *** Conditional tangle per OS
+- Note taken on [2021-07-17 Sat 15:56] \\
+  WHat
 To be able to be selective about which OS a file should be tangled for, I have
 a simple function to pass to the tangle header argument for simplicity.
 
@@ -29,11 +31,11 @@ Checking the system type is based on [[https://emacs.stackexchange.com/a/14034][
 (defun tos (os file-name)
   "tos (tangle OS) returns the passed file-name if the current system is the passed OS, with shortened names for convenience"
   (let ((st (cond
-            ((equal os "mac") 'darwin)
-            ((equal os "linux") 'gnu/linux))
-                ))
+             ((equal os "mac") 'darwin)
+             ((equal os "linux") 'gnu/linux))
+            ))
     (when (eq system-type st) file-name)
-  ))
+    ))
 #+end_src
 
 If ran on macOS, it will look like the following:
@@ -43,4 +45,3 @@ If ran on macOS, it will look like the following:
 
 #+RESULTS:
 : right/here
-
