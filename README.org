@@ -3,17 +3,44 @@
 #+email:     madshvero@gmail.com
 
 * Mads' personal setup
-** Goals
+** About this repo
+*** Goals
 - All config/dotfiles in one place
 - Work for each environment i'd use
   + macOS
   + (TBD) Windows
   + (TBD) Linux
 - Organized in a way that makes sense
-** Prerequisites
+*** Prerequisites
 - git
 - patience in case things break
-** Usage
+*** Usage
 - =git clonei git@github.com:madsroskar/.mads.d.git=
 - Execute the buffer
   =C-c C-v b=
+** Setup
+*** Common setup
+**** Conditional tangle per OS
+To be able to be selective about which OS a file should be tangled for, I have
+a simple function to pass to the tangle header argument for simplicity.
+
+Checking the system type is based on [[https://emacs.stackexchange.com/a/14034][this stackexchange answer]].
+#+begin_src elisp :tangle no :results output silent
+(defun tos (os file-name)
+  "tos (tangle OS) returns the passed file-name if the current system is the passed OS, with shortened names for convenience"
+  (let ((st (cond
+            ((equal os "mac") 'darwin)
+            ((equal os "linux") 'gnu/linux))
+                ))
+    (when (eq system-type st) file-name)
+  ))
+#+end_src
+
+If ran on macOS, it will look like the following:
+#+begin_src elisp
+(tos "mac" "right/here")
+#+end_src
+
+#+RESULTS:
+: right/here
+
