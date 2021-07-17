@@ -1,0 +1,19 @@
+#+title:     .mads.d
+#+author:    Mads Røskar
+#+email:     madshvero@gmail.com
+
+* Mads' personal setup
+** Goals
+- All config/dotfiles in one place
+- Work for each environment i'd use
+  + macOS
+  + (TBD) Windows
+  + (TBD) Linux
+- Organized in a way that makes sense
+** Prerequisites
+- git
+- patience in case things break
+** Usage
+- =git clonei git@github.com:madsroskar/.mads.d.git=
+- Execute the buffer
+  =C-c C-v b=
