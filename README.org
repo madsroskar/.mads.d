@@ -57,6 +57,7 @@ a security risk, and I'll  not spend too much time on that right now.
 #+end_src
 **** TODO Find a way to not have to evaluate this manually, and preferably before the rest of the config is set up
 - Could possibly make it into a minor mode for myself? 🤔
+**** TODO Make these not expand their headings
 *** Conditional tangle per OS
 To be able to be selective about which OS a file should be tangled for, I have
 a simple function to pass to the tangle header argument for simplicity.
@@ -117,7 +118,9 @@ The usage will be:
 #+end_example
 
 *** Automatic export on save
-I don't want to do =C-c C-e m M= all the time, so this is just a convenience to have that happen automatically
+I don't want to do =C-c C-e m M= all the time, so this is just a convenience to have that happen automatically.
+
+
 
 #+name: save-and-export
 #+begin_src elisp :results output silent
@@ -512,6 +515,70 @@ This file should define all packages I want to have available, on top of what do
 
 #+RESULTS:
 | format-all | :modules | (nil) |
+** Git
+*** Gitconfig
+This file is pretty self explanatory. I have a few simple aliases here, but they've been rendered unnecessary thanks to magit which is my new, and one true, love.
+
+#+begin_src conf :tangle (tdir ".git/.gitconfig")
+[user]
+	name = Mads Røskar
+	email = madshvero@gmail.com
+[core]
+	excludesfile = ~/.gitignore
+[rerere]
+	enabled = 1
+[alias]
+  c = commit
+  s = status
+  a = add
+  sts = stash
+  diffc = diff --color-words -U0
+  llog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%aN>%Creset' --abbrev-commit --date=relative
+[github]
+	user = madsroskar
+[help]
+  defaultBranch = main
+	# oauth-token = {{ Insert here, omitted causee public. :) }}
+#+end_src
+*** Gitignore
+:PROPERTIES:
+:header-args: :tangle (tdir ".git/.gitignore")
+:END:
+Many of these are taken from [[https://github.com/github/gitignore][the gitignore repo by Github]].
+**** macOS
+***** General
+#+begin_src conf
+.DS_Store
+.AppleDouble
+.LSOverride
+#+end_src
+***** Icon must end with two =\r=
+#+begin_src conf
+Icon
+#+end_src
+***** Thumbnails
+#+begin_src conf
+._*
+#+end_src
+***** Files that might appear in the root of a volume
+#+begin_src conf
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+#+end_src
+
+***** Directories potentially created on remote AFP share
+#+begin_src conf
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+#+end_src
 
 * Footnotes
 

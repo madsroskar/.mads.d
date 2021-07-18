@@ -1,28 +1,31 @@
 # Table of Contents
 
-1.  [About this repo](#org720ff39)
-    1.  [What is this?](#orgbbbcefd)
-    2.  [Goals](#org8a6d2c1)
-    3.  [Prerequisites](#orgaefcfdb)
-    4.  [Usage](#org8d325d9)
-2.  [Setup](#org6c2e40b)
-    1.  [Utilities](#org9da2b05)
-        1.  [Evaluate needed utilities](#orgd08d358)
-        2.  [Conditional tangle per OS](#org8c7d4b5)
-        3.  [Prepend a common directory to tangle files to](#orgac5c257)
-        4.  [Automatic export on save](#org1513979)
-    2.  [Complete list of custom keybinds](#orgd1dca05)
-    3.  [DOOM Emacs](#org3496c5e)
-        1.  [Config](#org906c905)
-        2.  [init.el](#org08292dc)
-        3.  [custom.el](#org3d1eead)
-        4.  [package.el](#org8b2f2d2)
+1.  [About this repo](#org5f776e5)
+    1.  [What is this?](#orgb56791b)
+    2.  [Goals](#orgb59ac88)
+    3.  [Prerequisites](#org7fffe9c)
+    4.  [Usage](#org92590bf)
+2.  [Setup](#org21057b3)
+    1.  [Utilities](#orgefc0780)
+        1.  [Evaluate needed utilities](#org40a96cb)
+        2.  [Conditional tangle per OS](#org4288915)
+        3.  [Prepend a common directory to tangle files to](#org191d1c2)
+        4.  [Automatic export on save](#org4501ead)
+    2.  [Complete list of custom keybinds](#orga4a12bb)
+    3.  [DOOM Emacs](#org7a4267b)
+        1.  [Config](#org31e8230)
+        2.  [init.el](#orge7514e8)
+        3.  [custom.el](#org14ed729)
+        4.  [package.el](#orgabc1f55)
+    4.  [Git](#orgdfa784d)
+        1.  [Gitconfig](#orge969252)
+        2.  [Gitignore](#org15dd566)
 
-<a id="org720ff39"></a>
+<a id="org5f776e5"></a>
 
 # About this repo
 
-<a id="orgbbbcefd"></a>
+<a id="orgb56791b"></a>
 
 ## What is this?
 
@@ -30,14 +33,14 @@ This repository keeps my personal configuration so set up my environment. Since 
 to emacs by a colleague<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, I&rsquo;ve really started enjoying it, and especially `org-mode` and `magit`.
 
 This setup is most likely just super redundant/overcomplicated, but it seemed like a fun time sink for a Saturday
-to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#org9da2b05).
+to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#orgefc0780).
 
 Who I am:
 
     (setq user-full-name "Mads Røskar"
           user-mail-address "madshvero@gmail.com")
 
-<a id="org8a6d2c1"></a>
+<a id="orgb59ac88"></a>
 
 ## Goals
 
@@ -48,14 +51,14 @@ Who I am:
   - (TBD) Linux
 - Organized in a way that makes sense
 
-<a id="orgaefcfdb"></a>
+<a id="org7fffe9c"></a>
 
 ## Prerequisites
 
 - git
 - patience in case things break
 
-<a id="org8d325d9"></a>
+<a id="org92590bf"></a>
 
 ## Usage
 
@@ -64,15 +67,15 @@ Who I am:
   `C-c C-v b`
 - # Tangle everything
 
-<a id="org6c2e40b"></a>
+<a id="org21057b3"></a>
 
 # Setup
 
-<a id="org9da2b05"></a>
+<a id="orgefc0780"></a>
 
 ## Utilities
 
-<a id="orgd08d358"></a>
+<a id="org40a96cb"></a>
 
 ### Evaluate needed utilities
 
@@ -93,7 +96,9 @@ a security risk, and I&rsquo;ll not spend too much time on that right now.
 
     - Could possibly make it into a minor mode for myself? 🤔
 
-<a id="org8c7d4b5"></a>
+2.  TODO Make these not expand their headings
+
+<a id="org4288915"></a>
 
 ### Conditional tangle per OS
 
@@ -118,7 +123,7 @@ If ran on macOS, it will look like the following:
     #+RESULTS:
     : right/here
 
-<a id="orgac5c257"></a>
+<a id="org191d1c2"></a>
 
 ### Prepend a common directory to tangle files to
 
@@ -145,11 +150,11 @@ The usage will be:
     #+RESULTS:
     : ./files/.config/mads/.sleep-schedule
 
-<a id="org1513979"></a>
+<a id="org4501ead"></a>
 
 ### Automatic export on save
 
-I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenience to have that happen automatically
+I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenience to have that happen automatically.
 
     (defun save-and-export ()
       (interactive)
@@ -157,7 +162,7 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
         (org-md-export-to-markdown)))
     (add-hook 'after-save-hook 'save-and-export nil t)
 
-<a id="orgd1dca05"></a>
+<a id="orga4a12bb"></a>
 
 ## Complete list of custom keybinds
 
@@ -168,11 +173,11 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
     (setq mac-command-modifier 'meta)
     (setq mac-pass-command-to-system nil)
 
-<a id="org3496c5e"></a>
+<a id="org7a4267b"></a>
 
 ## DOOM Emacs
 
-<a id="org906c905"></a>
+<a id="org31e8230"></a>
 
 ### Config
 
@@ -258,14 +263,14 @@ anyways.
 3.  Keybinds
 
     Most keybinds are set up by doom and evil-mode, but a few have been added or changed to work
-    better for me. See a [complete list of custom keybinds for an overview](#orgd1dca05)
+    better for me. See a [complete list of custom keybinds for an overview](#orga4a12bb)
 
     Use command in macos as Meta, and don&rsquo;t pass it to the system:
 
         (setq mac-command-modifier 'meta)
         (setq mac-pass-command-to-system nil)
 
-<a id="org08292dc"></a>
+<a id="orge7514e8"></a>
 
 ### init.el
 
@@ -461,7 +466,7 @@ This is the entry point to the DOOM configuration, which sets up modules to be u
            ;; literate
            (default +bindings +smartparens))
 
-<a id="org3d1eead"></a>
+<a id="org14ed729"></a>
 
 ### custom.el
 
@@ -487,7 +492,7 @@ be synced back here. Yay manual work woo 🎉
 
 1.  TODO extract the packages and config from this file into the proper config
 
-<a id="org8b2f2d2"></a>
+<a id="orgabc1f55"></a>
 
 ### package.el
 
@@ -546,6 +551,76 @@ This file should define all packages I want to have available, on top of what do
     ;
     (package! graphql-mode)
     (package! format-all)
+
+<a id="orgdfa784d"></a>
+
+## Git
+
+<a id="orge969252"></a>
+
+### Gitconfig
+
+This file is pretty self explanatory. I have a few simple aliases here, but they&rsquo;ve been rendered unnecessary thanks to magit which is my new, and one true, love.
+
+    [user]
+    	name = Mads Røskar
+    	email = madshvero@gmail.com
+    [core]
+    	excludesfile = ~/.gitignore
+    [rerere]
+    	enabled = 1
+    [alias]
+      c = commit
+      s = status
+      a = add
+      sts = stash
+      diffc = diff --color-words -U0
+      llog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%aN>%Creset' --abbrev-commit --date=relative
+    [github]
+    	user = madsroskar
+    [help]
+      defaultBranch = main
+    	# oauth-token = {{ Insert here, omitted causee public. :) }}
+
+<a id="org15dd566"></a>
+
+### Gitignore
+
+Many of these are taken from [the gitignore repo by Github](https://github.com/github/gitignore).
+
+1.  macOS
+
+    1.  General
+
+            .DS_Store
+            .AppleDouble
+            .LSOverride
+
+    2.  Icon must end with two `\r`
+
+            Icon
+
+    3.  Thumbnails
+
+            ._*
+
+    4.  Files that might appear in the root of a volume
+
+            .DocumentRevisions-V100
+            .fseventsd
+            .Spotlight-V100
+            .TemporaryItems
+            .Trashes
+            .VolumeIcon.icns
+            .com.apple.timemachine.donotpresent
+
+    5.  Directories potentially created on remote AFP share
+
+            .AppleDB
+            .AppleDesktop
+            Network Trash Folder
+            Temporary Items
+            .apdisk
 
 # Footnotes
 
