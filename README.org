@@ -592,18 +592,27 @@ export EDITOR='emacsclient -t -c'
 #+end_src
 *** Path
 I wasn't aware of the lowercase =path= array, but that makes dealing with the path environment variable so much better. Stumbled across it in a [[https://stackoverflow.com/a/18077919/2246084][StackOverflow answer]].
+**** Yarn
 #+begin_src sh
 path+=("$HOME/.yarn/bin")
-path+=("$HOME/.cabal/bin")
 path+=("$HOME/.config/yarn/global/node_modules/.bin")
+#+end_src
+**** Cabal
+#+begin_src sh
+path+=("$HOME/.cabal/bin")
+#+end_src
+**** Golang
+#+begin_src sh
 path+=("$HOME/go/bin")
+#+end_src
+**** Flutter
+#+begin_src sh
 path+=("$HOME/code/oss/flutter/bin")
+#+end_src
+**** Make the path available to subprocesses
+#+begin_src sh
 export PATH
 #+end_src
-**** Yarn
-**** Cabal
-**** Golang
-**** Flutter
 *** Program specific configuration
 **** nvm
 nvm needs to be loaded for zsh to be able to use it.
