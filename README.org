@@ -3,6 +3,7 @@
 #+author:    Mads Røskar
 #+email:     madshvero@gmail.com
 #+options: todo:t
+
 * About this repo
 ** What is this?
 This repository keeps my personal configuration so set up my environment. Since being introduced
@@ -49,6 +50,8 @@ a security risk, and I'll  not spend too much time on that right now.
   (org-babel-goto-named-src-block "tangle-util")
   (org-babel-execute-src-block)
   (org-babel-goto-named-src-block "tangle-base-dir")
+  (org-babel-execute-src-block)
+  (org-babel-goto-named-src-block "save-and-export")
   (org-babel-execute-src-block)
   )
 #+end_src
@@ -112,6 +115,18 @@ The usage will be:
 #+RESULTS:
 : ./files/.config/mads/.sleep-schedule
 #+end_example
+
+*** Automatic export on save
+I don't want to do =C-c C-e m M= all the time, so this is just a convenience to have that happen automatically
+
+#+name: save-and-export
+#+begin_src elisp :results output silent
+(defun save-and-export ()
+  (interactive)
+  (if (eq major-mode 'org-mode)
+    (org-md-export-to-markdown)))
+(add-hook 'after-save-hook 'save-and-export nil t)
+#+end_src
 
 ** Complete list of custom keybinds
 #+begin_src elisp :noweb yes :tangle no

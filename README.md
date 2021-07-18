@@ -1,27 +1,28 @@
 # Table of Contents
 
-1.  [About this repo](#orga55b4a0)
-    1.  [What is this?](#org0a2e874)
-    2.  [Goals](#org1906574)
-    3.  [Prerequisites](#orgf25fd1a)
-    4.  [Usage](#org8a99bfa)
-2.  [Setup](#org05db708)
-    1.  [Utilities](#org796fc5e)
-        1.  [Evaluate needed utilities](#orgb282a70)
-        2.  [Conditional tangle per OS](#orgec60a10)
-        3.  [Prepend a common directory to tangle files to](#orgc0ac0da)
-    2.  [Complete list of custom keybinds](#org536efef)
-    3.  [DOOM Emacs](#org187e1e4)
-        1.  [Config](#orgcdbc0b3)
-        2.  [init.el](#org1de2281)
-        3.  [custom.el](#org7d69eb1)
-        4.  [package.el](#orgbeb5c68)
+1.  [About this repo](#org720ff39)
+    1.  [What is this?](#orgbbbcefd)
+    2.  [Goals](#org8a6d2c1)
+    3.  [Prerequisites](#orgaefcfdb)
+    4.  [Usage](#org8d325d9)
+2.  [Setup](#org6c2e40b)
+    1.  [Utilities](#org9da2b05)
+        1.  [Evaluate needed utilities](#orgd08d358)
+        2.  [Conditional tangle per OS](#org8c7d4b5)
+        3.  [Prepend a common directory to tangle files to](#orgac5c257)
+        4.  [Automatic export on save](#org1513979)
+    2.  [Complete list of custom keybinds](#orgd1dca05)
+    3.  [DOOM Emacs](#org3496c5e)
+        1.  [Config](#org906c905)
+        2.  [init.el](#org08292dc)
+        3.  [custom.el](#org3d1eead)
+        4.  [package.el](#org8b2f2d2)
 
-<a id="orga55b4a0"></a>
+<a id="org720ff39"></a>
 
 # About this repo
 
-<a id="org0a2e874"></a>
+<a id="orgbbbcefd"></a>
 
 ## What is this?
 
@@ -29,14 +30,14 @@ This repository keeps my personal configuration so set up my environment. Since 
 to emacs by a colleague<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, I&rsquo;ve really started enjoying it, and especially `org-mode` and `magit`.
 
 This setup is most likely just super redundant/overcomplicated, but it seemed like a fun time sink for a Saturday
-to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#org796fc5e).
+to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#org9da2b05).
 
 Who I am:
 
     (setq user-full-name "Mads Røskar"
           user-mail-address "madshvero@gmail.com")
 
-<a id="org1906574"></a>
+<a id="org8a6d2c1"></a>
 
 ## Goals
 
@@ -47,14 +48,14 @@ Who I am:
   - (TBD) Linux
 - Organized in a way that makes sense
 
-<a id="orgf25fd1a"></a>
+<a id="orgaefcfdb"></a>
 
 ## Prerequisites
 
 - git
 - patience in case things break
 
-<a id="org8a99bfa"></a>
+<a id="org8d325d9"></a>
 
 ## Usage
 
@@ -63,15 +64,15 @@ Who I am:
   `C-c C-v b`
 - # Tangle everything
 
-<a id="org05db708"></a>
+<a id="org6c2e40b"></a>
 
 # Setup
 
-<a id="org796fc5e"></a>
+<a id="org9da2b05"></a>
 
 ## Utilities
 
-<a id="orgb282a70"></a>
+<a id="orgd08d358"></a>
 
 ### Evaluate needed utilities
 
@@ -84,13 +85,15 @@ a security risk, and I&rsquo;ll not spend too much time on that right now.
       (org-babel-execute-src-block)
       (org-babel-goto-named-src-block "tangle-base-dir")
       (org-babel-execute-src-block)
+      (org-babel-goto-named-src-block "save-and-export")
+      (org-babel-execute-src-block)
       )
 
 1.  TODO Find a way to not have to evaluate this manually, and preferably before the rest of the config is set up
 
     - Could possibly make it into a minor mode for myself? 🤔
 
-<a id="orgec60a10"></a>
+<a id="org8c7d4b5"></a>
 
 ### Conditional tangle per OS
 
@@ -115,7 +118,7 @@ If ran on macOS, it will look like the following:
     #+RESULTS:
     : right/here
 
-<a id="orgc0ac0da"></a>
+<a id="orgac5c257"></a>
 
 ### Prepend a common directory to tangle files to
 
@@ -142,7 +145,19 @@ The usage will be:
     #+RESULTS:
     : ./files/.config/mads/.sleep-schedule
 
-<a id="org536efef"></a>
+<a id="org1513979"></a>
+
+### Automatic export on save
+
+I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenience to have that happen automatically
+
+    (defun save-and-export ()
+      (interactive)
+      (if (eq major-mode 'org-mode)
+        (org-md-export-to-markdown)))
+    (add-hook 'after-save-hook 'save-and-export nil t)
+
+<a id="orgd1dca05"></a>
 
 ## Complete list of custom keybinds
 
@@ -153,11 +168,11 @@ The usage will be:
     (setq mac-command-modifier 'meta)
     (setq mac-pass-command-to-system nil)
 
-<a id="org187e1e4"></a>
+<a id="org3496c5e"></a>
 
 ## DOOM Emacs
 
-<a id="orgcdbc0b3"></a>
+<a id="org906c905"></a>
 
 ### Config
 
@@ -243,14 +258,14 @@ anyways.
 3.  Keybinds
 
     Most keybinds are set up by doom and evil-mode, but a few have been added or changed to work
-    better for me. See a [complete list of custom keybinds for an overview](#org536efef)
+    better for me. See a [complete list of custom keybinds for an overview](#orgd1dca05)
 
     Use command in macos as Meta, and don&rsquo;t pass it to the system:
 
         (setq mac-command-modifier 'meta)
         (setq mac-pass-command-to-system nil)
 
-<a id="org1de2281"></a>
+<a id="org08292dc"></a>
 
 ### init.el
 
@@ -446,7 +461,7 @@ This is the entry point to the DOOM configuration, which sets up modules to be u
            ;; literate
            (default +bindings +smartparens))
 
-<a id="org7d69eb1"></a>
+<a id="org3d1eead"></a>
 
 ### custom.el
 
@@ -472,7 +487,7 @@ be synced back here. Yay manual work woo 🎉
 
 1.  TODO extract the packages and config from this file into the proper config
 
-<a id="orgbeb5c68"></a>
+<a id="org8b2f2d2"></a>
 
 ### package.el
 
