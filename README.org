@@ -3,6 +3,7 @@
 #+author:    Mads Røskar
 #+email:     madshvero@gmail.com
 #+options: todo:t
+#+property: header-args    :comments both
 
 * About this repo
 ** What is this?
@@ -36,7 +37,7 @@ Who I am:
   ==
 * Setup
 :PROPERTIES:
-:header-args: :dir ./files :mkdirp yes
+:header-args: :dir ./files :mkdirp yes :comments both
 :END:
 ** Utilities
 *** Evaluate needed utilities
@@ -141,7 +142,7 @@ I don't want to do =C-c C-e m M= all the time, so this is just a convenience to 
 ** DOOM Emacs
 *** Config
 :PROPERTIES:
-:header-args: :tangle (tdir ".doom.d/config.el")
+:header-args: :tangle (tdir ".doom.d/config.el") :comments both
 :END:
 This is my custom configuration for doom emacs, and all the underlying code blocks will tangle to =.doom.d/config.el=.
 I have disabled the literate config module in doom emacs since I will keep the literate version of it here pre tangle
@@ -542,7 +543,7 @@ This file is pretty self explanatory. I have a few simple aliases here, but they
 #+end_src
 *** Gitignore
 :PROPERTIES:
-:header-args: :tangle (tdir ".git/.gitignore")
+:header-args: :tangle (tdir ".git/.gitignore") :comments both
 :END:
 Many of these are taken from [[https://github.com/github/gitignore][the gitignore repo by Github]].
 **** macOS
@@ -579,7 +580,127 @@ Network Trash Folder
 Temporary Items
 .apdisk
 #+end_src
+** zsh
+:PROPERTIES:
+:header-args: :tangle (tdir ".zshrc") :comments both
+:END:
+*** Editor
+I've been converted. I can no longer use anything else than emacs. This is far too good to have as a tool for me to be able to even try something else. I don't think it's stockholm syndrome, but I guess it's tough to know for sure if it's yourself.
 
+#+begin_src sh
+export EDITOR='emacsclient -t -c'
+#+end_src
+*** Path
+I wasn't aware of the lowercase =path= array, but that makes dealing with the path environment variable so much better. Stumbled across it in a [[https://stackoverflow.com/a/18077919/2246084][StackOverflow answer]].
+#+begin_src sh
+path+=("$HOME/.yarn/bin")
+path+=("$HOME/.cabal/bin")
+path+=("$HOME/.config/yarn/global/node_modules/.bin")
+path+=("$HOME/go/bin")
+path+=("$HOME/code/oss/flutter/bin")
+export PATH
+#+end_src
+**** Yarn
+**** Cabal
+**** Golang
+**** Flutter
+*** Program specific configuration
+**** nvm
+nvm needs to be loaded for zsh to be able to use it.
+#+begin_src sh
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
+#+end_src
+**** direnv
+direnv needs to hook into zsh to set up environment variables.
+#+begin_src sh
+eval "$(direnv hook zsh)"
+#+end_src
+*** XDG Base Directories
+I want to migrate all, or as many as possible, of my configuration and cache files to follow the [[https://wiki.archlinux.org/title/XDG_Base_Directory][XDG Base Directory]] [[https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html][specification]] to have less clutter in my home directory.
+
+These environment variables should be used to configure where to look for these files.
+
+#+begin_src sh
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+#+end_src
+**** Configurations to convert
+***** [ ] Emacs
+***** [ ] Alacritty
+***** [ ] Karabiner
+***** [ ] rvm
+***** [ ] swi-prolog
+***** [ ] yarn
+***** [ ] skhd
+***** [ ] Cargo
+***** [ ] Docker
+***** Dart [0/2]
+****** [ ] .dart
+****** [ ] .dartServer
+***** [ ] Doom Emacs
+***** [ ] Expo
+***** [ ] .gem
+***** [ ] .ghc
+***** [ ] .gnupg
+***** [ ] .npm
+***** [ ] .nvm
+***** [ ] .oh-my-zsh
+***** [ ] .ssh
+***** [ ] .zsh_sessions
+**** Cache
+Moving ZSH cache files into =$XDG_CACHE_HOME=
+#+begin_src sh
+export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
+export HISTFILE="$XDG_CACHE_HOME/zsh/.zsh_history"
+#+end_src
+*** oh-my-zsh
+I should really spend time to dive deeper in what I actually need for oh-my-zsh, I've just always used it as-is without thinking more about it 🤔
+**** TODO Install
+Haven't figured out what to do about installing stuff just yet..
+**** Add oh-my-zsh
+#+begin_src sh
+export ZSH="/Users/madshvero/.oh-my-zsh"
+#+end_src
+**** Set a theme
+The only theme I really like of the ones I've tried is =af-magic=, as it's very simple while still displaying the information I want for it to.
+#+begin_src sh
+ZSH_THEME="af-magic"
+#+end_src
+**** Load
+#+begin_src sh
+source $ZSH/oh-my-zsh.sh
+#+end_src
+*** .fzf.zsh
+I use the fuzzy finder by junegunn.
+**** Add fzf to path
+#+begin_src sh
+if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
+fi
+#+end_src
+**** Add autocompletion
+#+begin_src sh
+[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+#+end_src
+**** Add keybindings
+#+begin_src sh
+source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+#+end_src
+**** =fd= is =cd= but ✨fuzzy✨
+#+begin_src sh
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+#+end_src
+**** Load
+#+begin_src sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#+end_src
 * Footnotes
 
 [fn:1] I will wait with adding a link here till I've asked the person whether it's alright to link them here or not. Not a big deal in this case I'd think, but rather safe than sorry 😊

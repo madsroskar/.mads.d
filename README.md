@@ -1,31 +1,38 @@
 # Table of Contents
 
-1.  [About this repo](#org5f776e5)
-    1.  [What is this?](#orgb56791b)
-    2.  [Goals](#orgb59ac88)
-    3.  [Prerequisites](#org7fffe9c)
-    4.  [Usage](#org92590bf)
-2.  [Setup](#org21057b3)
-    1.  [Utilities](#orgefc0780)
-        1.  [Evaluate needed utilities](#org40a96cb)
-        2.  [Conditional tangle per OS](#org4288915)
-        3.  [Prepend a common directory to tangle files to](#org191d1c2)
-        4.  [Automatic export on save](#org4501ead)
-    2.  [Complete list of custom keybinds](#orga4a12bb)
-    3.  [DOOM Emacs](#org7a4267b)
-        1.  [Config](#org31e8230)
-        2.  [init.el](#orge7514e8)
-        3.  [custom.el](#org14ed729)
-        4.  [package.el](#orgabc1f55)
-    4.  [Git](#orgdfa784d)
-        1.  [Gitconfig](#orge969252)
-        2.  [Gitignore](#org15dd566)
+1.  [About this repo](#orgdcc1921)
+    1.  [What is this?](#org295bcf8)
+    2.  [Goals](#org77e1be1)
+    3.  [Prerequisites](#orgd1ce40a)
+    4.  [Usage](#org84dda78)
+2.  [Setup](#org83d1b73)
+    1.  [Utilities](#org3606421)
+        1.  [Evaluate needed utilities](#org66d8a65)
+        2.  [Conditional tangle per OS](#orgf1b1427)
+        3.  [Prepend a common directory to tangle files to](#orgc0d8116)
+        4.  [Automatic export on save](#orgf288b97)
+    2.  [Complete list of custom keybinds](#org46a3a67)
+    3.  [DOOM Emacs](#org94eafa6)
+        1.  [Config](#orgf2be4a2)
+        2.  [init.el](#org29170f9)
+        3.  [custom.el](#orgf65b345)
+        4.  [package.el](#org853f160)
+    4.  [Git](#org5a282cd)
+        1.  [Gitconfig](#org236d0e1)
+        2.  [Gitignore](#org207202b)
+    5.  [zsh](#orge613e38)
+        1.  [Editor](#orgaad5683)
+        2.  [Path](#orga9a2146)
+        3.  [Program specific configuration](#orgb3b937e)
+        4.  [XDG Base Directories](#org3335868)
+        5.  [oh-my-zsh](#orga4a4b2d)
+        6.  [.fzf.zsh](#orga08d576)
 
-<a id="org5f776e5"></a>
+<a id="orgdcc1921"></a>
 
 # About this repo
 
-<a id="orgb56791b"></a>
+<a id="org295bcf8"></a>
 
 ## What is this?
 
@@ -33,14 +40,14 @@ This repository keeps my personal configuration so set up my environment. Since 
 to emacs by a colleague<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, I&rsquo;ve really started enjoying it, and especially `org-mode` and `magit`.
 
 This setup is most likely just super redundant/overcomplicated, but it seemed like a fun time sink for a Saturday
-to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#orgefc0780).
+to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#org3606421).
 
 Who I am:
 
     (setq user-full-name "Mads Røskar"
           user-mail-address "madshvero@gmail.com")
 
-<a id="orgb59ac88"></a>
+<a id="org77e1be1"></a>
 
 ## Goals
 
@@ -51,14 +58,14 @@ Who I am:
   - (TBD) Linux
 - Organized in a way that makes sense
 
-<a id="org7fffe9c"></a>
+<a id="orgd1ce40a"></a>
 
 ## Prerequisites
 
 - git
 - patience in case things break
 
-<a id="org92590bf"></a>
+<a id="org84dda78"></a>
 
 ## Usage
 
@@ -67,15 +74,15 @@ Who I am:
   `C-c C-v b`
 - # Tangle everything
 
-<a id="org21057b3"></a>
+<a id="org83d1b73"></a>
 
 # Setup
 
-<a id="orgefc0780"></a>
+<a id="org3606421"></a>
 
 ## Utilities
 
-<a id="org40a96cb"></a>
+<a id="org66d8a65"></a>
 
 ### Evaluate needed utilities
 
@@ -98,7 +105,7 @@ a security risk, and I&rsquo;ll not spend too much time on that right now.
 
 2.  TODO Make these not expand their headings
 
-<a id="org4288915"></a>
+<a id="orgf1b1427"></a>
 
 ### Conditional tangle per OS
 
@@ -123,7 +130,7 @@ If ran on macOS, it will look like the following:
     #+RESULTS:
     : right/here
 
-<a id="org191d1c2"></a>
+<a id="orgc0d8116"></a>
 
 ### Prepend a common directory to tangle files to
 
@@ -150,7 +157,7 @@ The usage will be:
     #+RESULTS:
     : ./files/.config/mads/.sleep-schedule
 
-<a id="org4501ead"></a>
+<a id="orgf288b97"></a>
 
 ### Automatic export on save
 
@@ -162,7 +169,7 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
         (org-md-export-to-markdown)))
     (add-hook 'after-save-hook 'save-and-export nil t)
 
-<a id="orga4a12bb"></a>
+<a id="org46a3a67"></a>
 
 ## Complete list of custom keybinds
 
@@ -173,11 +180,11 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
     (setq mac-command-modifier 'meta)
     (setq mac-pass-command-to-system nil)
 
-<a id="org7a4267b"></a>
+<a id="org94eafa6"></a>
 
 ## DOOM Emacs
 
-<a id="org31e8230"></a>
+<a id="orgf2be4a2"></a>
 
 ### Config
 
@@ -263,14 +270,14 @@ anyways.
 3.  Keybinds
 
     Most keybinds are set up by doom and evil-mode, but a few have been added or changed to work
-    better for me. See a [complete list of custom keybinds for an overview](#orga4a12bb)
+    better for me. See a [complete list of custom keybinds for an overview](#org46a3a67)
 
     Use command in macos as Meta, and don&rsquo;t pass it to the system:
 
         (setq mac-command-modifier 'meta)
         (setq mac-pass-command-to-system nil)
 
-<a id="orge7514e8"></a>
+<a id="org29170f9"></a>
 
 ### init.el
 
@@ -466,7 +473,7 @@ This is the entry point to the DOOM configuration, which sets up modules to be u
            ;; literate
            (default +bindings +smartparens))
 
-<a id="org14ed729"></a>
+<a id="orgf65b345"></a>
 
 ### custom.el
 
@@ -492,7 +499,7 @@ be synced back here. Yay manual work woo 🎉
 
 1.  TODO extract the packages and config from this file into the proper config
 
-<a id="orgabc1f55"></a>
+<a id="org853f160"></a>
 
 ### package.el
 
@@ -552,11 +559,11 @@ This file should define all packages I want to have available, on top of what do
     (package! graphql-mode)
     (package! format-all)
 
-<a id="orgdfa784d"></a>
+<a id="org5a282cd"></a>
 
 ## Git
 
-<a id="orge969252"></a>
+<a id="org236d0e1"></a>
 
 ### Gitconfig
 
@@ -582,7 +589,7 @@ This file is pretty self explanatory. I have a few simple aliases here, but they
       defaultBranch = main
     	# oauth-token = {{ Insert here, omitted causee public. :) }}
 
-<a id="org15dd566"></a>
+<a id="org207202b"></a>
 
 ### Gitignore
 
@@ -621,6 +628,178 @@ Many of these are taken from [the gitignore repo by Github](https://github.com/g
             Network Trash Folder
             Temporary Items
             .apdisk
+
+<a id="orge613e38"></a>
+
+## zsh
+
+<a id="orgaad5683"></a>
+
+### Editor
+
+I&rsquo;ve been converted. I can no longer use anything else than emacs. This is far too good to have as a tool for me to be able to even try something else. I don&rsquo;t think it&rsquo;s stockholm syndrome, but I guess it&rsquo;s tough to know for sure if it&rsquo;s yourself.
+
+    export EDITOR='emacsclient -t -c'
+
+<a id="orga9a2146"></a>
+
+### Path
+
+I wasn&rsquo;t aware of the lowercase `path` array, but that makes dealing with the path environment variable so much better. Stumbled across it in a [StackOverflow answer](https://stackoverflow.com/a/18077919/2246084).
+
+    path+=("$HOME/.yarn/bin")
+    path+=("$HOME/.cabal/bin")
+    path+=("$HOME/.config/yarn/global/node_modules/.bin")
+    path+=("$HOME/go/bin")
+    path+=("$HOME/code/oss/flutter/bin")
+    export PATH
+
+1.  Yarn
+
+2.  Cabal
+
+3.  Golang
+
+4.  Flutter
+
+<a id="orgb3b937e"></a>
+
+### Program specific configuration
+
+1.  nvm
+
+    nvm needs to be loaded for zsh to be able to use it.
+
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+        [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
+
+2.  direnv
+
+    direnv needs to hook into zsh to set up environment variables.
+
+        eval "$(direnv hook zsh)"
+
+<a id="org3335868"></a>
+
+### XDG Base Directories
+
+I want to migrate all, or as many as possible, of my configuration and cache files to follow the [XDG Base Directory](https://wiki.archlinux.org/title/XDG_Base_Directory) [specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) to have less clutter in my home directory.
+
+These environment variables should be used to configure where to look for these files.
+
+    export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+    export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+1.  Configurations to convert
+
+    1.  [ ] Emacs
+
+    2.  [ ] Alacritty
+
+    3.  [ ] Karabiner
+
+    4.  [ ] rvm
+
+    5.  [ ] swi-prolog
+
+    6.  [ ] yarn
+
+    7.  [ ] skhd
+
+    8.  [ ] Cargo
+
+    9.  [ ] Docker
+
+    10. Dart <code>[0/2]</code>
+
+        1.  [ ] .dart
+
+        2.  [ ] .dartServer
+
+    11. [ ] Doom Emacs
+
+    12. [ ] Expo
+
+    13. [ ] .gem
+
+    14. [ ] .ghc
+
+    15. [ ] .gnupg
+
+    16. [ ] .npm
+
+    17. [ ] .nvm
+
+    18. [ ] .oh-my-zsh
+
+    19. [ ] .ssh
+
+    20. [ ] .zsh<sub>sessions</sub>
+
+2.  Cache
+
+    Moving ZSH cache files into `$XDG_CACHE_HOME`
+
+        export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
+        export HISTFILE="$XDG_CACHE_HOME/zsh/.zsh_history"
+
+<a id="orga4a4b2d"></a>
+
+### oh-my-zsh
+
+I should really spend time to dive deeper in what I actually need for oh-my-zsh, I&rsquo;ve just always used it as-is without thinking more about it 🤔
+
+1.  TODO Install
+
+    Haven&rsquo;t figured out what to do about installing stuff just yet..
+
+2.  Add oh-my-zsh
+
+        export ZSH="/Users/madshvero/.oh-my-zsh"
+
+3.  Set a theme
+
+    The only theme I really like of the ones I&rsquo;ve tried is `af-magic`, as it&rsquo;s very simple while still displaying the information I want for it to.
+
+        ZSH_THEME="af-magic"
+
+4.  Load
+
+        source $ZSH/oh-my-zsh.sh
+
+<a id="orga08d576"></a>
+
+### .fzf.zsh
+
+I use the fuzzy finder by junegunn.
+
+1.  Add fzf to path
+
+        if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
+          export PATH="${PATH:+${PATH}:}/usr/local/opt/fzf/bin"
+        fi
+
+2.  Add autocompletion
+
+        [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+3.  Add keybindings
+
+        source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+4.  `fd` is `cd` but ✨fuzzy✨
+
+        fd() {
+          local dir
+          dir=$(find ${1:-.} -path '*/\.*' -prune \
+                          -o -type d -print 2> /dev/null | fzf +m) &&
+          cd "$dir"
+        }
+
+5.  Load
+
+        [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Footnotes
 
