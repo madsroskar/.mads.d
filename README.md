@@ -1,38 +1,53 @@
 # Table of Contents
 
-1.  [About this repo](#org18e64af)
-    1.  [What is this?](#org75ab4ba)
-    2.  [Goals](#org9114a00)
-    3.  [Prerequisites](#org91b341c)
-    4.  [Usage](#org33187fe)
-2.  [Setup](#org0436de8)
-    1.  [Utilities](#orgc7703fc)
-        1.  [Evaluate needed utilities](#org7608c65)
-        2.  [Conditional tangle per OS](#org58bdcbe)
-        3.  [Prepend a common directory to tangle files to](#org1e5234f)
-        4.  [Automatic export on save](#orgd20db25)
-    2.  [Complete list of custom keybinds](#org1fcbce6)
-    3.  [DOOM Emacs](#orgc9f5366)
-        1.  [Config](#orgf2ba6c5)
-        2.  [init.el](#org5444abb)
-        3.  [custom.el](#org69ecfab)
-        4.  [package.el](#orgbf68b49)
-    4.  [Git](#orge4ab661)
-        1.  [Gitconfig](#org0878069)
-        2.  [Gitignore](#orgdbf06ba)
-    5.  [zsh](#orge56c8a2)
-        1.  [Editor](#org42f5f71)
-        2.  [Path](#org5d2867f)
-        3.  [Program specific configuration](#org9d647bf)
-        4.  [XDG Base Directories](#org56c8d6a)
-        5.  [oh-my-zsh](#orgffc2f99)
-        6.  [.fzf.zsh](#org2f1de0a)
+1.  [About this repo](#org01781a0)
+    1.  [What is this?](#orgab7738e)
+    2.  [Goals](#org70b8c7b)
+    3.  [Prerequisites](#org1071ce4)
+    4.  [Usage](#org03eac46)
+2.  [Setup](#orgb663a94)
+    1.  [Utilities](#orgd2390ad)
+        1.  [Evaluate needed utilities](#org57b2b52)
+        2.  [Conditional tangle per OS](#org0e66392)
+        3.  [Prepend a common directory to tangle files to](#orge787955)
+        4.  [Automatic export on save](#org3ae863b)
+    2.  [Complete list of custom keybinds](#org35ca993)
+    3.  [DOOM Emacs](#orga5cf6d7)
+        1.  [Config](#orga10f1bd)
+        2.  [init.el](#orged1e81e)
+        3.  [custom.el](#org950fcff)
+        4.  [package.el](#orgc6d1ebd)
+    4.  [Git](#org3a600cb)
+        1.  [Gitconfig](#org8ff5c6f)
+        2.  [Gitignore](#org521a952)
+    5.  [zsh](#orgebe281d)
+        1.  [Editor](#org9989c03)
+        2.  [Path](#org4ac8eda)
+        3.  [Program specific configuration](#org5447ea3)
+        4.  [XDG Base Directories](#orgc890a35)
+        5.  [oh-my-zsh](#org634dd31)
+        6.  [.fzf.zsh](#orgf2e6a73)
+    6.  [Alacritty](#org837a60c)
+        1.  [Environment variables](#org05b6f2b)
+        2.  [Window (frame)](#org0c64fe9)
+        3.  [UI/&ldquo;Themeing&rdquo;](#orgaceac0f)
+        4.  [Mouse](#org3746854)
+        5.  [Key bindings](#orgc82d12f)
+        6.  [Misc](#orgbfc580d)
+    7.  [SKHD](#orgc01b431)
+        1.  [Built-in modifiers](#org67b2f7f)
+        2.  [Yabai (Window management)](#org999d769)
+    8.  [Yabai](#orgc558f21)
+        1.  [Startup](#org03da690)
+        2.  [Global settings](#orgaf2efce)
+        3.  [General space settings](#org3f09006)
+        4.  [Ignored programs](#orgb3d35a7)
 
-<a id="org18e64af"></a>
+<a id="org01781a0"></a>
 
 # About this repo
 
-<a id="org75ab4ba"></a>
+<a id="orgab7738e"></a>
 
 ## What is this?
 
@@ -40,14 +55,14 @@ This repository keeps my personal configuration so set up my environment. Since 
 to emacs by a colleague<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, I&rsquo;ve really started enjoying it, and especially `org-mode` and `magit`.
 
 This setup is most likely just super redundant/overcomplicated, but it seemed like a fun time sink for a Saturday
-to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#orgc7703fc).
+to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#orgd2390ad).
 
 Who I am:
 
     (setq user-full-name "Mads Røskar"
           user-mail-address "madshvero@gmail.com")
 
-<a id="org9114a00"></a>
+<a id="org70b8c7b"></a>
 
 ## Goals
 
@@ -58,14 +73,14 @@ Who I am:
   - (TBD) Linux
 - Organized in a way that makes sense
 
-<a id="org91b341c"></a>
+<a id="org1071ce4"></a>
 
 ## Prerequisites
 
 - git
 - patience in case things break
 
-<a id="org33187fe"></a>
+<a id="org03eac46"></a>
 
 ## Usage
 
@@ -74,15 +89,15 @@ Who I am:
   `C-c C-v b`
 - # Tangle everything
 
-<a id="org0436de8"></a>
+<a id="orgb663a94"></a>
 
 # Setup
 
-<a id="orgc7703fc"></a>
+<a id="orgd2390ad"></a>
 
 ## Utilities
 
-<a id="org7608c65"></a>
+<a id="org57b2b52"></a>
 
 ### Evaluate needed utilities
 
@@ -105,7 +120,7 @@ a security risk, and I&rsquo;ll not spend too much time on that right now.
 
 2.  TODO Make these not expand their headings
 
-<a id="org58bdcbe"></a>
+<a id="org0e66392"></a>
 
 ### Conditional tangle per OS
 
@@ -130,7 +145,7 @@ If ran on macOS, it will look like the following:
     #+RESULTS:
     : right/here
 
-<a id="org1e5234f"></a>
+<a id="orge787955"></a>
 
 ### Prepend a common directory to tangle files to
 
@@ -157,7 +172,7 @@ The usage will be:
     #+RESULTS:
     : ./files/.config/mads/.sleep-schedule
 
-<a id="orgd20db25"></a>
+<a id="org3ae863b"></a>
 
 ### Automatic export on save
 
@@ -169,7 +184,7 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
         (org-md-export-to-markdown)))
     (add-hook 'after-save-hook 'save-and-export nil t)
 
-<a id="org1fcbce6"></a>
+<a id="org35ca993"></a>
 
 ## Complete list of custom keybinds
 
@@ -180,11 +195,11 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
     (setq mac-command-modifier 'meta)
     (setq mac-pass-command-to-system nil)
 
-<a id="orgc9f5366"></a>
+<a id="orga5cf6d7"></a>
 
 ## DOOM Emacs
 
-<a id="orgf2ba6c5"></a>
+<a id="orga10f1bd"></a>
 
 ### Config
 
@@ -270,14 +285,14 @@ anyways.
 3.  Keybinds
 
     Most keybinds are set up by doom and evil-mode, but a few have been added or changed to work
-    better for me. See a [complete list of custom keybinds for an overview](#org1fcbce6)
+    better for me. See a [complete list of custom keybinds for an overview](#org35ca993)
 
     Use command in macos as Meta, and don&rsquo;t pass it to the system:
 
         (setq mac-command-modifier 'meta)
         (setq mac-pass-command-to-system nil)
 
-<a id="org5444abb"></a>
+<a id="orged1e81e"></a>
 
 ### init.el
 
@@ -473,7 +488,7 @@ This is the entry point to the DOOM configuration, which sets up modules to be u
            ;; literate
            (default +bindings +smartparens))
 
-<a id="org69ecfab"></a>
+<a id="org950fcff"></a>
 
 ### custom.el
 
@@ -499,7 +514,7 @@ be synced back here. Yay manual work woo 🎉
 
 1.  TODO extract the packages and config from this file into the proper config
 
-<a id="orgbf68b49"></a>
+<a id="orgc6d1ebd"></a>
 
 ### package.el
 
@@ -559,11 +574,11 @@ This file should define all packages I want to have available, on top of what do
     (package! graphql-mode)
     (package! format-all)
 
-<a id="orge4ab661"></a>
+<a id="org3a600cb"></a>
 
 ## Git
 
-<a id="org0878069"></a>
+<a id="org8ff5c6f"></a>
 
 ### Gitconfig
 
@@ -589,7 +604,7 @@ This file is pretty self explanatory. I have a few simple aliases here, but they
       defaultBranch = main
     	# oauth-token = {{ Insert here, omitted causee public. :) }}
 
-<a id="orgdbf06ba"></a>
+<a id="org521a952"></a>
 
 ### Gitignore
 
@@ -629,11 +644,11 @@ Many of these are taken from [the gitignore repo by Github](https://github.com/g
             Temporary Items
             .apdisk
 
-<a id="orge56c8a2"></a>
+<a id="orgebe281d"></a>
 
 ## zsh
 
-<a id="org42f5f71"></a>
+<a id="org9989c03"></a>
 
 ### Editor
 
@@ -641,7 +656,7 @@ I&rsquo;ve been converted. I can no longer use anything else than emacs. This is
 
     export EDITOR='emacsclient -t -c'
 
-<a id="org5d2867f"></a>
+<a id="org4ac8eda"></a>
 
 ### Path
 
@@ -668,7 +683,7 @@ I wasn&rsquo;t aware of the lowercase `path` array, but that makes dealing with 
 
         export PATH
 
-<a id="org9d647bf"></a>
+<a id="org5447ea3"></a>
 
 ### Program specific configuration
 
@@ -686,7 +701,7 @@ I wasn&rsquo;t aware of the lowercase `path` array, but that makes dealing with 
 
         eval "$(direnv hook zsh)"
 
-<a id="org56c8d6a"></a>
+<a id="orgc890a35"></a>
 
 ### XDG Base Directories
 
@@ -750,7 +765,7 @@ These environment variables should be used to configure where to look for these 
         export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
         export HISTFILE="$XDG_CACHE_HOME/zsh/.zsh_history"
 
-<a id="orgffc2f99"></a>
+<a id="org634dd31"></a>
 
 ### oh-my-zsh
 
@@ -774,7 +789,7 @@ I should really spend time to dive deeper in what I actually need for oh-my-zsh,
 
         source $ZSH/oh-my-zsh.sh
 
-<a id="org2f1de0a"></a>
+<a id="orgf2e6a73"></a>
 
 ### .fzf.zsh
 
@@ -806,6 +821,412 @@ I use the fuzzy finder by junegunn.
 5.  Load
 
         [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+<a id="org837a60c"></a>
+
+## Alacritty
+
+I currently use Alacritty as my terminal emulator, even though I very rarely need the terminal emulator anymore since I do just about everything in emacs.
+
+Alacritty does feel pretty nice in use though, and is pretty simple to configure as it&rsquo;s a matter of dealing with one single yaml file - now in org-mode 😎
+
+<a id="org05b6f2b"></a>
+
+### Environment variables
+
+    env:
+      TERM: xterm-256color
+
+1.  List of used variables
+
+    <!-- This HTML table template is generated by emacs 27.2 -->
+    <table border="1">
+      <tr>
+        <td align="left" valign="top">
+          &nbsp;TERM&nbsp;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+        <td align="left" valign="top">
+          &nbsp;This&nbsp;value&nbsp;is&nbsp;used&nbsp;to&nbsp;set&nbsp;the&nbsp;`$TERM`&nbsp;environment&nbsp;&nbsp;&nbsp;&nbsp;<br />
+          variable&nbsp;for&nbsp;each&nbsp;instance&nbsp;of&nbsp;Alacritty.&nbsp;If&nbsp;it&nbsp;is&nbsp;not&nbsp;<br />
+          present,&nbsp;alacritty&nbsp;will&nbsp;check&nbsp;the&nbsp;local&nbsp;terminfo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+          database&nbsp;and&nbsp;use&nbsp;`alacritty`&nbsp;if&nbsp;it&nbsp;is&nbsp;available,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />
+          otherwise&nbsp;`xterm-256color`&nbsp;is&nbsp;used.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+      </tr>
+    </table>
+
+<a id="org0c64fe9"></a>
+
+### Window (frame)
+
+    window:
+      padding:
+        x: 6
+        y: 6
+      dynamic_padding: false
+      decorations: buttonless
+      title: Alacritty
+      # Window class (Linux/BSD only):
+      class:
+        # Application instance name
+        instance: Alacritty
+        # General application class
+        general: Alacritty
+      # GTK theme variant (Linux/BSD only)
+      #
+      # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
+      # Set this to `None` to use the default theme variant.
+      #gtk_theme_variant: None
+
+<a id="orgaceac0f"></a>
+
+### UI/&ldquo;Themeing&rdquo;
+
+1.  Font
+
+        # Font configuration
+        font:
+          # Normal (roman) font face
+          normal:
+            family: Hack Nerd Font
+            style: Regular
+          # Bold font face
+          bold:
+            family: Hack Nerd Font
+            style: Bold
+          # Italic font face
+          italic:
+            family: Hack Nerd Font
+            style: Italic
+          bold_italic:
+            family: Hack Nerd Font
+            style: Bold Italic
+          # Point size
+          size: 16.0
+
+          # Offset is the extra space around each character. `offset.y` can be thought of
+          # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
+          offset:
+            x: 0
+            y: 1
+
+          # Thin stroke font rendering (macOS only)
+          #
+          # Thin strokes are suitable for retina displays, but for non-retina screens
+          # it is recommended to set `use_thin_strokes` to `false`
+          #
+          # macOS >= 10.14.x:
+          #
+          # If the font quality on non-retina display looks bad then set
+          # `use_thin_strokes` to `true` and enable font smoothing by running the
+          # following command:
+          #   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
+          #
+          # This is a global setting and will require a log out or restart to take
+          # effect.
+          use_thin_strokes: true
+
+        # If `true`, bold text is drawn using the bright color variants.
+        draw_bold_text_with_bright_colors: false
+
+2.  Colors
+
+        colors:
+          primary:
+            background: '#1d1f21'
+            foreground: '#c5c8c6'
+          selection:
+            text: '0x4a5568'
+          # Normal colors
+          normal:
+            black:   '0x1c1f24'
+            red:     '0xff6c6b'
+            green:   '0x98be65'
+            yellow:  '0xda8548'
+            blue:    '0x51afef'
+            magenta: '0xc678dd'
+            cyan:    '0x5699af'
+            white:   '0x202328'
+
+          # Bright colors
+          bright:
+            black:   '0x5b6268'
+            red:     '0xda8548'
+            green:   '0x4db5bd'
+            yellow:  '0xecbe7b'
+            blue:    '0x3071db'   # This is 2257a0 in Doom Emacs but I lightened it.
+            magenta: '0xa9a1e1'
+            cyan:    '0x46d9ff'
+            white:   '0xdfdfdf'
+        background_opacity: 0.93
+
+<a id="org3746854"></a>
+
+### Mouse
+
+    mouse:
+      hints:
+        launcher:
+          program: open
+          args: []
+
+<a id="orgc82d12f"></a>
+
+### Key bindings
+
+    key_bindings:
+        # (Windows, Linux, and BSD only)
+      - { key: V,         mods: Control|Shift, action: Paste                       }
+      - { key: C,         mods: Control|Shift, action: Copy                        }
+      - { key: Insert,    mods: Shift,         action: PasteSelection              }
+      - { key: Key0,      mods: Control,       action: ResetFontSize               }
+      - { key: Equals,    mods: Control,       action: IncreaseFontSize            }
+      - { key: Plus,      mods: Control,       action: IncreaseFontSize            }
+      - { key: Minus,     mods: Control,       action: DecreaseFontSize            }
+      - { key: Minus,     mods: Control,       action: DecreaseFontSize            }
+      - { key: F11,       mods: None,          action: ToggleFullscreen            }
+      - { key: Paste,     mods: None,          action: Paste                       }
+      - { key: Copy,      mods: None,          action: Copy                        }
+      - { key: L,         mods: Control,       action: ClearLogNotice              }
+      - { key: L,         mods: Control,       chars: "\x0c"                       }
+      - { key: PageUp,    mods: None,          action: ScrollPageUp,   mode: ~Alt  }
+      - { key: PageDown,  mods: None,          action: ScrollPageDown, mode: ~Alt  }
+      - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
+      - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
+        # Use option as Meta in macOs
+      - { key: J,         mods: Alt,           chars: "\x1bj"                      }
+      - { key: K,         mods: Alt,           chars: "\x1bk"                      }
+      - { key: H,         mods: Alt,           chars: "\x1bh"                      }
+      - { key: L,         mods: Alt,           chars: "\x1bl"                      }
+
+<a id="orgbfc580d"></a>
+
+### Misc
+
+    dynamic_title: true
+    live_config_reload: true
+    shell:
+      program: /usr/local/bin/zsh
+      args:
+          - --login
+    scrolling:
+      # Maximum number of lines in the scrollback buffer.
+      # Specifying '0' will disable scrolling.
+      history: 5000
+
+      # Number of lines the viewport will move for every line scrolled when
+      # scrollback is enabled (history > 0).
+      #multiplier: 3
+
+      # Scroll to the bottom when new text is written to the terminal.
+      #auto_scroll: false
+
+    # Spaces per Tab (changes require restart)
+    #
+    # This setting defines the width of a tab in cells.
+    #
+    # Some applications, like Emacs, rely on knowing about the width of a tab.
+    # To prevent unexpected behavior in these applications, it's also required to
+    # change the `it` value in terminfo when altering this setting.
+    #tabspaces: 8
+
+<a id="orgc01b431"></a>
+
+## SKHD
+
+<a id="org67b2f7f"></a>
+
+### Built-in modifiers
+
+This is the list of built-in modifiers as described in the start of the default skhd configuration.
+
+    # A list of all built-in modifier and literal keywords can
+    # be found at https://github.com/koekeishiya/skhd/issues/1
+    #
+    # A hotkey is written according to the following rules:
+    #
+    #   hotkey       = <mode> '<' <action> | <action>
+    #
+    #   mode         = 'name of mode' | <mode> ',' <mode>
+    #
+    #   action       = <keysym> '[' <proc_map_lst> ']' | <keysym> '->' '[' <proc_map_lst> ']'
+    #                  <keysym> ':' <command>          | <keysym> '->' ':' <command>
+    #                  <keysym> ';' <mode>             | <keysym> '->' ';' <mode>
+    #
+    #   keysym       = <mod> '-' <key> | <key>
+    #
+    #   mod          = 'modifier keyword' | <mod> '+' <mod>
+    #
+    #   key          = <literal> | <keycode>
+    #
+    #   literal      = 'single letter or built-in keyword'
+    #
+    #   keycode      = 'apple keyboard kVK_<Key> values (0x3C)'
+    #
+    #   proc_map_lst = * <proc_map>
+    #
+    #   proc_map     = <string> ':' <command> | <string>     '~' |
+    #                  '*'      ':' <command> | '*'          '~'
+    #
+    #   string       = '"' 'sequence of characters' '"'
+    #
+    #   command      = command is executed through '$SHELL -c' and
+    #                  follows valid shell syntax. if the $SHELL environment
+    #                  variable is not set, it will default to '/bin/bash'.
+    #                  when bash is used, the ';' delimeter can be specified
+    #                  to chain commands.
+    #
+    #                  to allow a command to extend into multiple lines,
+    #                  prepend '\' at the end of the previous line.
+    #
+    #                  an EOL character signifies the end of the bind.
+    #
+    #   ->           = keypress is not consumed by skhd
+    #
+    #   *            = matches every application not specified in <proc_map_lst>
+    #
+    #   ~            = application is unbound and keypress is forwarded per usual, when specified in a <proc_map>
+    #
+    # A mode is declared according to the following rules:
+    #
+    #   mode_decl = '::' <name> '@' ':' <command> | '::' <name> ':' <command> |
+    #               '::' <name> '@'               | '::' <name>
+    #
+    #   name      = desired name for this mode,
+    #
+    #   @         = capture keypresses regardless of being bound to an action
+    #
+    #   command   = command is executed through '$SHELL -c' and
+    #               follows valid shell syntax. if the $SHELL environment
+    #               variable is not set, it will default to '/bin/bash'.
+    #               when bash is used, the ';' delimeter can be specified
+    #               to chain commands.
+    #
+    #               to allow a command to extend into multiple lines,
+    #               prepend '\' at the end of the previous line.
+    #
+    #               an EOL character signifies the end of the bind.
+
+<a id="org999d769"></a>
+
+### Yabai (Window management)
+
+1.  Focus window
+
+        alt - h : yabai -m window --focus west
+        alt - j : yabai -m window --focus south
+        alt - k : yabai -m window --focus north
+        alt - l : yabai -m window --focus east
+
+
+        ctrl + shift - h  : yabai -m space --focus prev
+        ctrl + shift - l  : yabai -m space --focus next
+
+2.  Fous monitor
+
+        ctrl + alt - 1  : yabai -m display --focus 1
+        ctrl + alt - 2  : yabai -m display --focus 2
+        ctrl + alt - 3  : yabai -m display --focus 3
+        ctrl + alt - h  : yabai -m display --focus west
+        ctrl + alt - l  : yabai -m display --focus east
+
+3.  Moving windows
+
+        shift + alt - h : yabai -m window --warp west
+        shift + alt - j : yabai -m window --warp south
+        shift + alt - k : yabai -m window --warp north
+        shift + alt - l : yabai -m window --warp east
+
+4.  Floating windows
+
+        # Float/unfloat window
+        shift + alt - space : \
+            yabai -m window --toggle float; \
+            yabai -m window --toggle border
+
+        # make floating window fill screen
+        shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
+
+5.  Window sizing
+
+        # balance size of windows
+        shift + alt - 0 : yabai -m space --balance
+
+6.  Miscellaneous
+
+        # Restart Yabai
+        shift + lctrl + alt - r : \
+            /usr/bin/env osascript <<< \
+                "display notification \"Restarting Yabai\" with title \"Yabai\""; \
+            launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+<a id="orgc558f21"></a>
+
+## Yabai
+
+<a id="org03da690"></a>
+
+### Startup
+
+    #!/usr/bin/env sh
+    sudo yabai --load-sa
+    yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+<a id="orgaf2efce"></a>
+
+### Global settings
+
+    yabai -m config mouse_follows_focus          off
+    yabai -m config focus_follows_mouse          off
+    yabai -m config window_placement             second_child
+    yabai -m config window_topmost               off
+    yabai -m config window_shadow                off
+    yabai -m config window_opacity               off
+    yabai -m config window_opacity_duration      0.5
+    yabai -m config active_window_opacity        1.0
+    yabai -m config normal_window_opacity        0.95
+    yabai -m config window_border                on
+    yabai -m config window_border_width          2
+    yabai -m config active_window_border_color   0xff775759
+    yabai -m config normal_window_border_color   0x00555555
+    yabai -m config insert_feedback_color        0xffd75f5f
+    yabai -m config split_ratio                  0.50
+    yabai -m config auto_balance                 off
+    yabai -m config mouse_modifier               fn
+    yabai -m config mouse_action1                move
+    yabai -m config mouse_action2                resize
+    yabai -m config mouse_drop_action            swap
+
+<a id="org3f09006"></a>
+
+### General space settings
+
+    yabai -m config layout                       bsp
+    yabai -m config top_padding                  0
+    yabai -m config bottom_padding               0
+    yabai -m config left_padding                 0
+    yabai -m config right_padding                0
+    yabai -m config window_gap                   0
+
+<a id="orgb3d35a7"></a>
+
+### Ignored programs
+
+- &ldquo;System Preferences&rdquo;
+- &ldquo;Finder&rdquo;
+- &ldquo;Simulator&rdquo;
+
+  for p in $programs; do
+        yabai -m rule --add app="^$p$" manage=off
+  done
+
+  /usr/bin/env osascript <<< \
+   "display notification \"Restarting Yabai\" with title \"Yabai\""; \
+  launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
 # Footnotes
 
