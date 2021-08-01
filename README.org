@@ -135,8 +135,7 @@ I don't want to do =C-c C-e m M= all the time, so this is just a convenience to 
 ** Installed software
 *** Homebrew
 **** CLI
-| Program             | Description                                                                  |
-|---------------------+------------------------------------------------------------------------------|
+#+name: brew-table
 | alpine              | News and email agent                                                         |
 | cabal-install       | Command-line interface for Cabal and Hackage                                 |
 | cask                | Emacs dependency management                                                  |
@@ -193,6 +192,23 @@ I don't want to do =C-c C-e m M= all the time, so this is just a convenience to 
 | watchman            | Watch files and take action when they change                                 |
 | wget                | Internet file retriever                                                      |
 | zlib                | General-purpose lossless data-compression library                            |
+***** Install (Or upgrade) all
+#+begin_src sh :var programs=brew-table[,0] :tangle (tdir "Brewfile.sh")
+function install_or_upgrade {
+    if brew ls --versions "$1" >/dev/null; then
+        HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade "$1"
+    else
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install "$1"
+    fi
+}
+
+for p in $programs; do
+    install_or_upgrade "$p"
+done;
+#+end_src
+
+#+RESULTS:
+
 **** Cask
 | Program             | Description                                               |
 |---------------------+-----------------------------------------------------------|
@@ -203,6 +219,21 @@ I don't want to do =C-c C-e m M= all the time, so this is just a convenience to 
 | ngrok               | Reverse proxy, secure introspectable tunnels to localhost |
 | oracle-jdk          | JDK from Oracle                                           |
 | qutebrowser         | Keyboard-driven, vim-like browser based on PyQt5          |
+
+***** Install (Or upgrade) all
+#+begin_src sh :var programs=brew-table[,0] :tangle (tdir "Brewfile.sh")
+function install_or_upgrade {
+    if brew ls --versions "$1" --cask >/dev/null; then
+        HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade "$1"
+    else
+        HOMEBREW_NO_AUTO_UPDATE=1 brew install "$1" --cask
+    fi
+}
+
+for p in $programs; do
+    install_or_upgrade "$p"
+done;
+#+end_src
 
 ** Complete list of custom keybinds
 #+begin_src elisp :noweb yes :tangle no
