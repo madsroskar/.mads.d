@@ -194,7 +194,7 @@ I don't want to do =C-c C-e m M= all the time, so this is just a convenience to 
 | wget                | Internet file retriever                                                      |
 | zlib                | General-purpose lossless data-compression library                            |
 **** Cask
-| Program             | Descirption                                               |
+| Program             | Description                                               |
 |---------------------+-----------------------------------------------------------|
 | alacritty           | GPU-accelerated terminal emulator                         |
 | cabal               | Desktop client for the chat platform Cabal                |
