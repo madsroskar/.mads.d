@@ -1,55 +1,55 @@
 # Table of Contents
 
-1.  [About this repo](#orgd939782)
-    1.  [What is this?](#orge80f29b)
-    2.  [Goals](#org284f967)
-    3.  [Prerequisites](#orgec8874c)
-    4.  [Usage](#org6810ece)
-2.  [Setup](#org103f523)
-    1.  [Utilities](#org8811550)
-        1.  [Evaluate needed utilities](#org30102da)
-        2.  [Conditional tangle per OS](#orgcaa7e65)
-        3.  [Prepend a common directory to tangle files to](#org080dc19)
-        4.  [Automatic export on save](#org6b0adb2)
-    2.  [Installed software](#org67d9ea5)
-        1.  [Homebrew](#org5cbbec8)
-    3.  [Complete list of custom keybinds](#orge852d7f)
-    4.  [DOOM Emacs](#org3fd0dea)
-        1.  [Config](#orgaafbc91)
-        2.  [init.el](#org030ea69)
-        3.  [custom.el](#orgd76a6dd)
-        4.  [package.el](#org29a3070)
-    5.  [Git](#org028d99b)
-        1.  [Gitconfig](#org7bf126f)
-        2.  [Gitignore](#org45c924a)
-    6.  [zsh](#org283d813)
-        1.  [Editor](#org0155edf)
-        2.  [Path](#org46de3e0)
-        3.  [Program specific configuration](#org49425c6)
-        4.  [XDG Base Directories](#orgb39fc8a)
-        5.  [oh-my-zsh](#orga4f60ac)
-        6.  [.fzf.zsh](#org027982a)
-    7.  [Alacritty](#orga05aad5)
-        1.  [Environment variables](#org2e6010c)
-        2.  [Window (frame)](#orgb8af27c)
-        3.  [UI/&ldquo;Themeing&rdquo;](#orgff2e16e)
-        4.  [Mouse](#orgf577841)
-        5.  [Key bindings](#org07c3fbb)
-        6.  [Misc](#org600403e)
-    8.  [SKHD](#org268ba1f)
-        1.  [Built-in modifiers](#org4d43716)
-        2.  [Yabai (Window management)](#org3815281)
-    9.  [Yabai](#org0fdf6a9)
-        1.  [Startup](#orgb5dd909)
-        2.  [Global settings](#orge391637)
-        3.  [General space settings](#org161d381)
-        4.  [Ignored programs](#orgaabde49)
+1.  [About this repo](#org8c139f6)
+    1.  [What is this?](#org4fb976b)
+    2.  [Goals](#orgf2ae8fb)
+    3.  [Prerequisites](#org0a8f024)
+    4.  [Usage](#org9cb22f7)
+2.  [Setup](#org5688f59)
+    1.  [Utilities](#org3a35e51)
+        1.  [Evaluate needed utilities](#org832a13c)
+        2.  [Conditional tangle per OS](#orgae143ee)
+        3.  [Prepend a common directory to tangle files to](#org6ca168c)
+        4.  [Automatic export on save](#org93935e1)
+    2.  [Installed software](#org3b93499)
+        1.  [Homebrew](#orge2f5d0a)
+    3.  [Complete list of custom keybinds](#orgb0f468e)
+    4.  [DOOM Emacs](#org13c629b)
+        1.  [Config](#orgc49fd07)
+        2.  [init.el](#org526d9e1)
+        3.  [custom.el](#org0a487a4)
+        4.  [package.el](#org92014b4)
+    5.  [Git](#orgf63749a)
+        1.  [Gitconfig](#orge11f033)
+        2.  [Gitignore](#orga54dc45)
+    6.  [zsh](#org2d4ef83)
+        1.  [Editor](#org0fda04f)
+        2.  [Path](#org87db47a)
+        3.  [Program specific configuration](#org055fd03)
+        4.  [XDG Base Directories](#orgd3f0d2b)
+        5.  [oh-my-zsh](#org4286b1d)
+        6.  [.fzf.zsh](#orgdc39e38)
+    7.  [Alacritty](#orgca76bd7)
+        1.  [Environment variables](#orge2cd533)
+        2.  [Window (frame)](#orgb18e40b)
+        3.  [UI/&ldquo;Themeing&rdquo;](#org7fc7cff)
+        4.  [Mouse](#org94e943a)
+        5.  [Key bindings](#org4f919cf)
+        6.  [Misc](#orga28666e)
+    8.  [SKHD](#org29dc360)
+        1.  [Built-in modifiers](#org6756567)
+        2.  [Yabai (Window management)](#org4ee645f)
+    9.  [Yabai](#org260c13d)
+        1.  [Startup](#org984668f)
+        2.  [Global settings](#org8b26112)
+        3.  [General space settings](#orgb655560)
+        4.  [Ignored programs](#org90ce32f)
 
-<a id="orgd939782"></a>
+<a id="org8c139f6"></a>
 
 # About this repo
 
-<a id="orge80f29b"></a>
+<a id="org4fb976b"></a>
 
 ## What is this?
 
@@ -57,14 +57,14 @@ This repository keeps my personal configuration so set up my environment. Since 
 to emacs by a colleague<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, I&rsquo;ve really started enjoying it, and especially `org-mode` and `magit`.
 
 This setup is most likely just super redundant/overcomplicated, but it seemed like a fun time sink for a Saturday
-to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#org8811550).
+to mess around a bit with `org-mode`, and some [simple emacs lisp functions](#org3a35e51).
 
 Who I am:
 
     (setq user-full-name "Mads Røskar"
           user-mail-address "madshvero@gmail.com")
 
-<a id="org284f967"></a>
+<a id="orgf2ae8fb"></a>
 
 ## Goals
 
@@ -75,14 +75,14 @@ Who I am:
   - (TBD) Linux
 - Organized in a way that makes sense
 
-<a id="orgec8874c"></a>
+<a id="org0a8f024"></a>
 
 ## Prerequisites
 
 - git
 - patience in case things break
 
-<a id="org6810ece"></a>
+<a id="org9cb22f7"></a>
 
 ## Usage
 
@@ -91,15 +91,15 @@ Who I am:
   `C-c C-v b`
 - # Tangle everything
 
-<a id="org103f523"></a>
+<a id="org5688f59"></a>
 
 # Setup
 
-<a id="org8811550"></a>
+<a id="org3a35e51"></a>
 
 ## Utilities
 
-<a id="org30102da"></a>
+<a id="org832a13c"></a>
 
 ### Evaluate needed utilities
 
@@ -122,7 +122,7 @@ a security risk, and I&rsquo;ll not spend too much time on that right now.
 
 2.  TODO Make these not expand their headings
 
-<a id="orgcaa7e65"></a>
+<a id="orgae143ee"></a>
 
 ### Conditional tangle per OS
 
@@ -147,7 +147,7 @@ If ran on macOS, it will look like the following:
     #+RESULTS:
     : right/here
 
-<a id="org080dc19"></a>
+<a id="org6ca168c"></a>
 
 ### Prepend a common directory to tangle files to
 
@@ -174,7 +174,7 @@ The usage will be:
     #+RESULTS:
     : ./files/.config/mads/.sleep-schedule
 
-<a id="org6b0adb2"></a>
+<a id="org93935e1"></a>
 
 ### Automatic export on save
 
@@ -186,11 +186,11 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
         (org-md-export-to-markdown)))
     (add-hook 'after-save-hook 'save-and-export nil t)
 
-<a id="org67d9ea5"></a>
+<a id="org3b93499"></a>
 
 ## Installed software
 
-<a id="org5cbbec8"></a>
+<a id="orge2f5d0a"></a>
 
 ### Homebrew
 
@@ -203,12 +203,14 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
 
     <col  class="org-left" />
     </colgroup>
-    <tbody>
+    <thead>
     <tr>
-    <td class="org-left">Program</td>
-    <td class="org-left">Description</td>
+    <th scope="col" class="org-left">Program</th>
+    <th scope="col" class="org-left">Description</th>
     </tr>
+    </thead>
 
+    <tbody>
     <tr>
     <td class="org-left">alpine</td>
     <td class="org-left">News and email agent</td>
@@ -491,7 +493,61 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
     </tbody>
     </table>
 
-<a id="orge852d7f"></a>
+2.  Cask
+
+    <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+    <colgroup>
+    <col  class="org-left" />
+
+    <col  class="org-left" />
+    </colgroup>
+    <thead>
+    <tr>
+    <th scope="col" class="org-left">Program</th>
+    <th scope="col" class="org-left">Descirption</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+    <td class="org-left">alacritty</td>
+    <td class="org-left">GPU-accelerated terminal emulator</td>
+    </tr>
+
+    <tr>
+    <td class="org-left">cabal</td>
+    <td class="org-left">Desktop client for the chat platform Cabal</td>
+    </tr>
+
+    <tr>
+    <td class="org-left">font-hack-nerd-font</td>
+    <td class="org-left">The font I use</td>
+    </tr>
+
+    <tr>
+    <td class="org-left">karabiner-elements</td>
+    <td class="org-left">Keyboard customizer</td>
+    </tr>
+
+    <tr>
+    <td class="org-left">ngrok</td>
+    <td class="org-left">Reverse proxy, secure introspectable tunnels to localhost</td>
+    </tr>
+
+    <tr>
+    <td class="org-left">oracle-jdk</td>
+    <td class="org-left">JDK from Oracle</td>
+    </tr>
+
+    <tr>
+    <td class="org-left">qutebrowser</td>
+    <td class="org-left">Keyboard-driven, vim-like browser based on PyQt5</td>
+    </tr>
+    </tbody>
+    </table>
+
+<a id="orgb0f468e"></a>
 
 ## Complete list of custom keybinds
 
@@ -534,11 +590,11 @@ I don&rsquo;t want to do `C-c C-e m M` all the time, so this is just a convenien
             "display notification \"Restarting Yabai\" with title \"Yabai\""; \
         launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
-<a id="org3fd0dea"></a>
+<a id="org13c629b"></a>
 
 ## DOOM Emacs
 
-<a id="orgaafbc91"></a>
+<a id="orgc49fd07"></a>
 
 ### Config
 
@@ -624,14 +680,14 @@ anyways.
 3.  Keybinds
 
     Most keybinds are set up by doom and evil-mode, but a few have been added or changed to work
-    better for me. See a [complete list of custom keybinds for an overview](#orge852d7f)
+    better for me. See a [complete list of custom keybinds for an overview](#orgb0f468e)
 
     Use command in macos as Meta, and don&rsquo;t pass it to the system:
 
         (setq mac-command-modifier 'meta)
         (setq mac-pass-command-to-system nil)
 
-<a id="org030ea69"></a>
+<a id="org526d9e1"></a>
 
 ### init.el
 
@@ -827,7 +883,7 @@ This is the entry point to the DOOM configuration, which sets up modules to be u
            ;; literate
            (default +bindings +smartparens))
 
-<a id="orgd76a6dd"></a>
+<a id="org0a487a4"></a>
 
 ### custom.el
 
@@ -853,7 +909,7 @@ be synced back here. Yay manual work woo 🎉
 
 1.  TODO extract the packages and config from this file into the proper config
 
-<a id="org29a3070"></a>
+<a id="org92014b4"></a>
 
 ### package.el
 
@@ -913,11 +969,11 @@ This file should define all packages I want to have available, on top of what do
     (package! graphql-mode)
     (package! format-all)
 
-<a id="org028d99b"></a>
+<a id="orgf63749a"></a>
 
 ## Git
 
-<a id="org7bf126f"></a>
+<a id="orge11f033"></a>
 
 ### Gitconfig
 
@@ -943,7 +999,7 @@ This file is pretty self explanatory. I have a few simple aliases here, but they
       defaultBranch = main
     	# oauth-token = {{ Insert here, omitted causee public. :) }}
 
-<a id="org45c924a"></a>
+<a id="orga54dc45"></a>
 
 ### Gitignore
 
@@ -983,11 +1039,11 @@ Many of these are taken from [the gitignore repo by Github](https://github.com/g
             Temporary Items
             .apdisk
 
-<a id="org283d813"></a>
+<a id="org2d4ef83"></a>
 
 ## zsh
 
-<a id="org0155edf"></a>
+<a id="org0fda04f"></a>
 
 ### Editor
 
@@ -995,7 +1051,7 @@ I&rsquo;ve been converted. I can no longer use anything else than emacs. This is
 
     export EDITOR='emacsclient -t -c'
 
-<a id="org46de3e0"></a>
+<a id="org87db47a"></a>
 
 ### Path
 
@@ -1022,7 +1078,7 @@ I wasn&rsquo;t aware of the lowercase `path` array, but that makes dealing with 
 
         export PATH
 
-<a id="org49425c6"></a>
+<a id="org055fd03"></a>
 
 ### Program specific configuration
 
@@ -1040,7 +1096,7 @@ I wasn&rsquo;t aware of the lowercase `path` array, but that makes dealing with 
 
         eval "$(direnv hook zsh)"
 
-<a id="orgb39fc8a"></a>
+<a id="orgd3f0d2b"></a>
 
 ### XDG Base Directories
 
@@ -1104,7 +1160,7 @@ These environment variables should be used to configure where to look for these 
         export ZSH_COMPDUMP="$XDG_CACHE_HOME/zsh/.zcompdump"
         export HISTFILE="$XDG_CACHE_HOME/zsh/.zsh_history"
 
-<a id="orga4f60ac"></a>
+<a id="org4286b1d"></a>
 
 ### oh-my-zsh
 
@@ -1128,7 +1184,7 @@ I should really spend time to dive deeper in what I actually need for oh-my-zsh,
 
         source $ZSH/oh-my-zsh.sh
 
-<a id="org027982a"></a>
+<a id="orgdc39e38"></a>
 
 ### .fzf.zsh
 
@@ -1161,7 +1217,7 @@ I use the fuzzy finder by junegunn.
 
         [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-<a id="orga05aad5"></a>
+<a id="orgca76bd7"></a>
 
 ## Alacritty
 
@@ -1169,7 +1225,7 @@ I currently use Alacritty as my terminal emulator, even though I very rarely nee
 
 Alacritty does feel pretty nice in use though, and is pretty simple to configure as it&rsquo;s a matter of dealing with one single yaml file - now in org-mode 😎
 
-<a id="org2e6010c"></a>
+<a id="orge2cd533"></a>
 
 ### Environment variables
 
@@ -1198,7 +1254,7 @@ Alacritty does feel pretty nice in use though, and is pretty simple to configure
       </tr>
     </table>
 
-<a id="orgb8af27c"></a>
+<a id="orgb18e40b"></a>
 
 ### Window (frame)
 
@@ -1221,7 +1277,7 @@ Alacritty does feel pretty nice in use though, and is pretty simple to configure
       # Set this to `None` to use the default theme variant.
       #gtk_theme_variant: None
 
-<a id="orgff2e16e"></a>
+<a id="org7fc7cff"></a>
 
 ### UI/&ldquo;Themeing&rdquo;
 
@@ -1303,7 +1359,7 @@ Alacritty does feel pretty nice in use though, and is pretty simple to configure
             white:   '0xdfdfdf'
         background_opacity: 0.93
 
-<a id="orgf577841"></a>
+<a id="org94e943a"></a>
 
 ### Mouse
 
@@ -1313,7 +1369,7 @@ Alacritty does feel pretty nice in use though, and is pretty simple to configure
           program: open
           args: []
 
-<a id="org07c3fbb"></a>
+<a id="org4f919cf"></a>
 
 ### Key bindings
 
@@ -1342,7 +1398,7 @@ Alacritty does feel pretty nice in use though, and is pretty simple to configure
       - { key: H,         mods: Alt,           chars: "\x1bh"                      }
       - { key: L,         mods: Alt,           chars: "\x1bl"                      }
 
-<a id="org600403e"></a>
+<a id="orga28666e"></a>
 
 ### Misc
 
@@ -1373,11 +1429,11 @@ Alacritty does feel pretty nice in use though, and is pretty simple to configure
     # change the `it` value in terminfo when altering this setting.
     #tabspaces: 8
 
-<a id="org268ba1f"></a>
+<a id="org29dc360"></a>
 
 ## SKHD
 
-<a id="org4d43716"></a>
+<a id="org6756567"></a>
 
 ### Built-in modifiers
 
@@ -1450,7 +1506,7 @@ This is the list of built-in modifiers as described in the start of the default 
     #
     #               an EOL character signifies the end of the bind.
 
-<a id="org3815281"></a>
+<a id="org4ee645f"></a>
 
 ### Yabai (Window management)
 
@@ -1503,11 +1559,11 @@ This is the list of built-in modifiers as described in the start of the default 
                 "display notification \"Restarting Yabai\" with title \"Yabai\""; \
             launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
 
-<a id="org0fdf6a9"></a>
+<a id="org260c13d"></a>
 
 ## Yabai
 
-<a id="orgb5dd909"></a>
+<a id="org984668f"></a>
 
 ### Startup
 
@@ -1515,7 +1571,7 @@ This is the list of built-in modifiers as described in the start of the default 
     sudo yabai --load-sa
     yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
-<a id="orge391637"></a>
+<a id="org8b26112"></a>
 
 ### Global settings
 
@@ -1540,7 +1596,7 @@ This is the list of built-in modifiers as described in the start of the default 
     yabai -m config mouse_action2                resize
     yabai -m config mouse_drop_action            swap
 
-<a id="org161d381"></a>
+<a id="orgb655560"></a>
 
 ### General space settings
 
@@ -1551,7 +1607,7 @@ This is the list of built-in modifiers as described in the start of the default 
     yabai -m config right_padding                0
     yabai -m config window_gap                   0
 
-<a id="orgaabde49"></a>
+<a id="org90ce32f"></a>
 
 ### Ignored programs
 
