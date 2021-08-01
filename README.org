@@ -132,7 +132,66 @@ I don't want to do =C-c C-e m M= all the time, so this is just a convenience to 
     (org-md-export-to-markdown)))
 (add-hook 'after-save-hook 'save-and-export nil t)
 #+end_src
-
+** Installed software
+*** Homebrew
+**** CLI
+| Program             | Description                                                                  |
+| alpine              | News and email agent                                                         |
+| cabal-install       | Command-line interface for Cabal and Hackage                                 |
+| cask                | Emacs dependency management                                                  |
+| cloc                | Statistics utility to count lines of code                                    |
+| cmake               | Cross-platform make                                                          |
+| cmatrix             | Console Matrix                                                               |
+| composer            | Dependency Manager for PHP                                                   |
+| direnv              | Load/unload environment variables based on $PWD                              |
+| dnsmasq             | Lightweight DNS forwarder and DHCP server                                    |
+| docker-compose      | Isolated development environments using Docker                               |
+| elixir              | Functional metaprogramming aware language built on Erlang VM                 |
+| figlet              | Banner-like program prints strings as ASCII art                              |
+| findutils           | Collection of GNU find, xargs, and locate                                    |
+| fswatch             | Monitor a directory for changes and run a shell command                      |
+| fzf                 | Command-line fuzzy finder written in Go                                      |
+| gnu-sed             | GNU implementation of the famous stream editor                               |
+| go                  | Open source programming language to build simple/reliable/efficient software |
+| hstr                | Bash and zsh history suggest box                                             |
+| hugo                | Configurable static site generator                                           |
+| irssi               | Modular IRC client                                                           |
+| isync               | Synchronize a maildir with an IMAP server                                    |
+| skhd                | Simple hotkey-daemon for macOS.                                              |
+| yabai               | A tiling window manager for macOS based on binary space partitioning.        |
+| kubernetes-cli      | Kubernetes command-line interface                                            |
+| librsvg             | Library to render SVG files using Cairo                                      |
+| luarocks            | Package manager for the Lua programming language                             |
+| mariadb             | Drop-in replacement for MySQL                                                |
+| mas                 | Mac App Store command-line interface                                         |
+| maven               | Java-based project management                                                |
+| mkcert              | Simple tool to make locally trusted development certificates                 |
+| mu                  | Tool for searching e-mail messages stored in the maildir-format              |
+| neofetch            | Fast, highly customisable system info script                                 |
+| neovim              | Ambitious Vim-fork focused on extensibility and agility                      |
+| ninja               | Small build system for use with gyp or CMake                                 |
+| node                | Platform built on V8 to build network applications                           |
+| nss                 | Libraries for security-enabled client and server applications                |
+| nvm                 | Manage multiple Node.js versions                                             |
+| pgformatter         | PostgreSQL syntax beautifier                                                 |
+| php                 | General-purpose scripting language                                           |
+| python@3.8          | Interpreted, interactive, object-oriented programming language               |
+| emacs-mac           | YAMAMOTO Mitsuharu's Mac port of GNU Emacs                                   |
+| ripgrep             | Search tool like grep and The Silver Searcher                                |
+| powerlevel9k        | A badass zsh theme with more power than a normal earthling                   |
+| shellcheck          | Static analysis and lint tool, for (ba)sh scripts                            |
+| stow                | Organize software neatly under a single directory tree (e.g. /usr/local)     |
+| swi-prolog          | ISO/Edinburgh-style Prolog interpreter                                       |
+| speedtest           | Ookla Speedtest                                                              |
+| the_silver_searcher | Code-search similar to ack                                                   |
+| tmux                | Terminal multiplexer                                                         |
+| tree                | Display directories as trees (with optional color/HTML output)               |
+| vim                 | Vi 'workalike' with many additional features                                 |
+| vlang               | V programming language                                                       |
+| watch               | Executes a program periodically, showing output fullscreen                   |
+| watchman            | Watch files and take action when they change                                 |
+| wget                | Internet file retriever                                                      |
+| zlib                | General-purpose lossless data-compression library                            |
 ** Complete list of custom keybinds
 #+begin_src elisp :noweb yes :tangle no
 <<keybind-org>>
