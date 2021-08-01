@@ -136,6 +136,7 @@ I don't want to do =C-c C-e m M= all the time, so this is just a convenience to 
 *** Homebrew
 **** CLI
 | Program             | Description                                                                  |
+|---------------------+------------------------------------------------------------------------------|
 | alpine              | News and email agent                                                         |
 | cabal-install       | Command-line interface for Cabal and Hackage                                 |
 | cask                | Emacs dependency management                                                  |
@@ -192,6 +193,17 @@ I don't want to do =C-c C-e m M= all the time, so this is just a convenience to 
 | watchman            | Watch files and take action when they change                                 |
 | wget                | Internet file retriever                                                      |
 | zlib                | General-purpose lossless data-compression library                            |
+**** Cask
+| Program             | Descirption                                               |
+|---------------------+-----------------------------------------------------------|
+| alacritty           | GPU-accelerated terminal emulator                         |
+| cabal               | Desktop client for the chat platform Cabal                |
+| font-hack-nerd-font | The font I use                                            |
+| karabiner-elements  | Keyboard customizer                                       |
+| ngrok               | Reverse proxy, secure introspectable tunnels to localhost |
+| oracle-jdk          | JDK from Oracle                                           |
+| qutebrowser         | Keyboard-driven, vim-like browser based on PyQt5          |
+
 ** Complete list of custom keybinds
 #+begin_src elisp :noweb yes :tangle no
 <<keybind-org>>
