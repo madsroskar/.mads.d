@@ -139,7 +139,9 @@ I don't want to do =C-c C-e m M= all the time, so this is just a convenience to 
 
 <<keybind-doom>>
 
+<<keybind-yabai>>
 #+end_src
+
 ** DOOM Emacs
 *** Config
 :PROPERTIES:
@@ -971,7 +973,11 @@ This is the list of built-in modifiers as described in the start of the default 
 #               an EOL character signifies the end of the bind.
 #+end_src
 *** Yabai (Window management)
+:PROPERTIES:
+:header-args: :noweb-ref keybind-yabai
+:END:
 **** Focus window
+#+name: keybind-org
 #+begin_src Conf
 alt - h : yabai -m window --focus west
 alt - j : yabai -m window --focus south
