@@ -1,0 +1,9 @@
+if [[ -z "/Users/madshvero/.config" ]]
+then
+        export XDG_CONFIG_HOME="/Users/madshvero/.config/"
+fi
+
+if [[ -d "/Users/madshvero/.config/zsh" ]]
+then
+        export ZDOTDIR="/Users/madshvero/.config/zsh/"
+fi

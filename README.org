@@ -36,6 +36,61 @@ Who I am:
   =C-c C-v b=
 - Tangle everything
   ==
+* Steps to set up a machine (macOS) from scratch
+This is my current process from zero to set up machine:
+** Install homebrew
+#+begin_src sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#+end_src
+** Use zsh by default
+#+begin_src sh
+chsh -s /bin/zsh
+#+end_src
+** Install all needed software
+#+begin_src sh
+sudo chmod u+x .files/homebrew/brew.sh
+sudo chmod u+x .files/homebrew/casks.sh
+
+./.files/homebrew/brew.sh
+./.files/homebrew/casks.sh
+#+end_src
+** Set up symlinks for all configuration (stow?)
+#+begin_src sh
+stow .files
+#+end_src
+** Source new zsh
+#+begin_src sh :tangle "banana.sh"
+sudo mkdir -p /etc/zsh
+cat << EndOfConf | sudo tee /etc/zsh/zshenv > /dev/null
+if [[ -z "$XDG_CONFIG_HOME" ]]
+then
+        export XDG_CONFIG_HOME="$HOME/.config/"
+fi
+
+if [[ -d "$XDG_CONFIG_HOME/zsh" ]]
+then
+        export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
+fi
+EndOfConf
+
+#+end_src
+
+
+#+begin_src sh
+source ~/.config/zsh/
+#+end_src
+** Emacs
+*** Configure doom to use my configuration
+*** Tangle all files?
+** Configure keyboard
+*** Caps->Esc
+** Set up SSH keys
+** Add SSH key to GitHub
+** Add SSH key to GitLab
+** Set background
+** Set Yabai & SKHD to run on startup
+** Set dark mode
+** Set up background image
 * Setup
 :PROPERTIES:
 :header-args: :dir ./files :mkdirp yes :comments both
